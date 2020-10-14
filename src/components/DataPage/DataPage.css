@@ -14,7 +14,10 @@ body {
 }
 
 .app__dropdown {
-    background-color: white;
+    background-color: black;
+    outline: 0;
+    border: 0;
+
 }
 
 .app__header>h1 {
@@ -37,6 +40,8 @@ body {
 .app__stats {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
 .app__right {
@@ -63,3 +68,4 @@ body {
         flex-direction: column;
     }
 }
+

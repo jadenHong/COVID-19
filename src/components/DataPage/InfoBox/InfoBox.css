@@ -3,6 +3,11 @@
     cursor: pointer;
 }
 
+.infoBox__content{
+    background-color:  rgb(65, 61, 61);
+    color: white;
+}
+
 /*  마지막 자식을 제외하고 마진을 준다. */
 .infoBox:not(:last-child){
     margin-right: 10px;
@@ -29,7 +34,6 @@
 }
 
 .infoBox__total{
-    color: #6c757d;
     font-weight: 700 !important;
     font-size: 0.8rem !important;
     margin-top: 15px !important;

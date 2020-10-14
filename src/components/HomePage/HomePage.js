@@ -4,7 +4,7 @@ import './HomePage.css';
 
 const FirstPage = () => {
     return (
-        <div className="first__page">
+        <div id="home" className="first__page">
             <div className="first__page__comment">
                 <p>Check out current country<br /> and global data on COVID-19 <br />here.</p>
             </div>

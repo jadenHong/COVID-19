@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import numeral from 'numeral';
+import './Table.css';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -16,6 +17,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
     body: {
         fontSize: 14,
+        color: theme.palette.common.white,
     },
 }))(TableCell);
 
@@ -28,54 +30,55 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const columns = [
+    { id: 'Flag', label: 'Flag', align: 'center', minWidth: 50 },
     { id: 'Country', label: 'Country', align: 'center', minWidth: 50 },
     {
         id: 'Cases',
         label: 'Cases',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'Recovered',
         label: 'Recovered',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'Deaths',
         label: 'Deaths',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'Tests',
         label: 'Tests',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'TodayCases',
         label: 'TodayCases',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toFixed(2),
     },
     {
         id: 'TodayDeaths',
         label: 'TodayDeaths',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toFixed(2),
     },
     {
         id: 'TodayRecovered',
         label: 'TodayRecovered',
         minWidth: 50,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toFixed(2),
     },
 ];
@@ -90,9 +93,14 @@ const useStyles = makeStyles({
     },
 });
 
-const TablePage = ({ countries }) => {
+const TablePage = ({ countries, setMapCenter }) => {
     const classes = useStyles();
+    console.log(countries);
 
+    const handleClick = (countryInfo) => {
+        console.log(countryInfo);
+        setMapCenter([countryInfo.lat, countryInfo.long]);
+    }
     return (
         <Paper className={classes.root}>
             <TableContainer className={classes.container}>
@@ -110,9 +118,10 @@ const TablePage = ({ countries }) => {
                             ))}
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {countries.map(({ country, cases, recovered, deaths, tests, todayCases, todayDeaths, todayRecovered }) => (
-                            <StyledTableRow key={country.updated}>
+                    <TableBody className="table__body">
+                        {countries.map(({ countryInfo, country, cases, recovered, deaths, tests, todayCases, todayDeaths, todayRecovered }) => (
+                            <StyledTableRow onClick={() => handleClick(countryInfo)} key={country.updated} className="table__body__row">
+                                <StyledTableCell align="center"><img src={countryInfo.flag} alt="flag" style={{ borderRadius: '5px', width: '2.0rem', height: '1.5rem' }}></img></StyledTableCell>
                                 <StyledTableCell align="center">{country}</StyledTableCell>
                                 <StyledTableCell align="right"><strong>{numeral(cases).format("0,0")}</strong></StyledTableCell>
                                 <StyledTableCell align="right">{numeral(recovered).format("0,0")}</StyledTableCell>

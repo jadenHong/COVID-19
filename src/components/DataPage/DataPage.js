@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import TablePage from './Table/TablePage';
 import LineGraph from './LineGraph/LineGraph';
 import { sortData, prettyPrintStat } from './Util';
+import earth_icon from '../../images/icons/earth_icon.png';
 
 const DataPage = () => {
 
@@ -86,11 +87,11 @@ const DataPage = () => {
                     <div className="app__header">
                         <h1>DATA & STATISTICS</h1>
                         <FormControl className="app__dropdown">
-                            <Select variant="outlined" value={country} onChange={onCountryChange}>
-                                <MenuItem value="worldwide">Worldwide</MenuItem>
+                            <Select variant="outlined" value={country} onChange={onCountryChange} style={{ color: 'white' }}>
+                                <MenuItem style={{ backgroundColor: 'black', color: 'white' }} value="worldwide"><img style={{ width: '25px', marginRight: '5px' }} src={earth_icon} alt="earth_icon" />Worldwide</MenuItem>
                                 {
-                                    countries.map((country, index) => (
-                                        <MenuItem key={index} value={country.value}>{country.name}</MenuItem>
+                                    tableData.map((data, index) => (
+                                        <MenuItem style={{ backgroundColor: 'black', color: 'white' }} key={index} value={data.country}><img style={{ width: '25px', marginRight: '5px' }} src={data.countryInfo.flag} alt="flag" /> {data.country}</MenuItem>
                                     ))
                                 }
                             </Select>
@@ -133,13 +134,14 @@ const DataPage = () => {
                 <Card className="app__right">
                     <CardContent>
                         <h3>Live Cases by Country</h3>
-                        {/* <Test countries={tableData} /> */}
-                        <TablePage countries={tableData} />
+
+                        {/* Table Page */}
+                        <TablePage setMapCenter={setMapCenter} countries={tableData} />
 
                     </CardContent>
                 </Card>
             </div>
-        </div>
+        </div >
     )
 }
 
