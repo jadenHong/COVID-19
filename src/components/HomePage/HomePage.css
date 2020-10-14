@@ -1,0 +1,18 @@
+.first__page{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+}
+.first__page__comment{
+    color: white;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+.first__page img{
+    border-radius: 10px;
+    margin: 40px;
+}
