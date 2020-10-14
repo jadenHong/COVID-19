@@ -2,7 +2,7 @@ import React from 'react';
 // npm install react-leaflet leaflet설치
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import './Map.css';
-import { showDataOnMap } from './Util';
+import { showDataOnMap } from '../Util';
 
 const Map = ({ countries, casesType, center, zoom }) => {
     return (
