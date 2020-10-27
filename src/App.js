@@ -24,6 +24,7 @@ function App() {
       <NewsPage />
       {/* ContactPage */}
       <ContactPage />
+
     </div>
   );
 }

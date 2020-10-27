@@ -4,7 +4,7 @@ import numeral from 'numeral';
 
 const casesTypeColors = {
     cases: {
-        hex: "#CC1034",
+        hex: "#103ccc",
         multiplier: 800,
     },
     recovered: {

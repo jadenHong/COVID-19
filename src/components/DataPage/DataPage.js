@@ -8,6 +8,7 @@ import TablePage from './Table/TablePage';
 import LineGraph from './LineGraph/LineGraph';
 import { sortData, prettyPrintStat } from './Util';
 import earth_icon from '../../images/icons/earth_icon.png';
+import HighMap from './HighMap/HighMap';
 
 const DataPage = () => {
 
@@ -122,13 +123,15 @@ const DataPage = () => {
                             total={countryInfo.deaths}
                         />
                     </div>
-                    <Map
+                    {/* <Map
                         casesType={casesType}
                         countries={mapCountries}
                         center={mapCenter}
-                        zoom={mapZoom} />
+                        zoom={mapZoom} /> */}
+                    <HighMap casesType={casesType} />
                     <h3 className="app__graphTitle">Worldwide new {casesType}</h3>
                     <LineGraph className="app__graph" casesType={casesType} />
+
                 </div>
                 {/* 그래프 부분 */}
                 <Card className="app__right">
